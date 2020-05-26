@@ -1,11 +1,3 @@
-#spring:
-#  application:
-#    name: albdemo01-provide
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: localhost:8848
-#    sentinel:
-#      transport:
-#        dashboard: localhost:8080
-#      eager: true
+spring:
+  profiles:
+    active: dev
