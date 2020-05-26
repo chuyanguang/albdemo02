@@ -30,12 +30,8 @@ public class HelloController {
 
     @ApiOperation(value = "test", notes = "test01")
     @GetMapping(value = "/say/{name}")
-    @SentinelResource(value = "sayname",
-            blockHandlerClass = HelloHandler.class,
-            blockHandler = "sayHelloDefault",
-            fallback = "sayHelloExp")
-    public Result sayHello(@ApiParam(name = "name", value = "名字")
-                               @PathVariable(value = "name") String name) {
+    @SentinelResource(value = "sayname", blockHandlerClass = HelloHandler.class, blockHandler = "sayHelloDefault", fallback = "sayHelloExp")
+    public Result sayHello(@ApiParam(name = "name", value = "名字") @PathVariable(value = "name") String name) {
         int count = 10/0;
         log.info("hello {}", name);
         return new Result(HttpStatus.OK, "成功", name);
@@ -44,6 +40,11 @@ public class HelloController {
     @GetMapping("getBL")
     public Result<String> getBL(){
         return new Result(HttpStatus.OK, "成功", bl01);
+    }
+
+    @GetMapping("cj")
+    public Result<String> getCJ(){
+        return new Result(HttpStatus.OK, "成功", "持久化配置");
     }
 
     public Result sayHelloExp(String name, Throwable  e){
