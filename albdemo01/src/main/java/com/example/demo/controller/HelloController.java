@@ -25,8 +25,8 @@ import javax.validation.Valid;
 @RequestMapping("hello")
 public class HelloController {
 
-    @Value("${test.bl}")
-    private String bl01;
+//    @Value("${test.bl}")
+//    private String bl01;
 
     @ApiOperation(value = "test", notes = "test01")
     @GetMapping(value = "/say/{name}")
@@ -37,10 +37,10 @@ public class HelloController {
         return new Result(HttpStatus.OK, "成功", name);
     }
 
-    @GetMapping("getBL")
-    public Result<String> getBL(){
-        return new Result(HttpStatus.OK, "成功", bl01);
-    }
+//    @GetMapping("getBL")
+//    public Result<String> getBL(){
+//        return new Result(HttpStatus.OK, "成功", bl01);
+//    }
 
     @GetMapping("cj")
     public Result<String> getCJ(){
