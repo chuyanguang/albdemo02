@@ -25,7 +25,7 @@
         <!--设置字段和类是否支持驼峰命名的属性。 系统默认值是false -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <!-- 打印查询语句 -->
-        <!-- <setting name="logImpl" value="STDOUT_LOGGING" /> -->
+<!--         <setting name="logImpl" value="STDOUT_LOGGING" />-->
     </settings>
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">

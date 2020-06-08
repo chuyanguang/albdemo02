@@ -20,7 +20,7 @@ import javax.validation.Valid;
 
 @Slf4j
 @Api(value = "hello",tags = "hello")
-@RefreshScope
+//@RefreshScope
 @RestController
 @RequestMapping("hello")
 public class HelloController {
@@ -30,7 +30,7 @@ public class HelloController {
 
     @ApiOperation(value = "test", notes = "test01")
     @GetMapping(value = "/say/{name}")
-    @SentinelResource(value = "sayname", blockHandlerClass = HelloHandler.class, blockHandler = "sayHelloDefault", fallback = "sayHelloExp")
+//    @SentinelResource(value = "sayname", blockHandlerClass = HelloHandler.class, blockHandler = "sayHelloDefault", fallback = "sayHelloExp")
     public Result sayHello(@ApiParam(name = "name", value = "名字") @PathVariable(value = "name") String name) {
         int count = 10/0;
         log.info("hello {}", name);
