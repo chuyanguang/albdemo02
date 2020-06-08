@@ -1,6 +1,6 @@
 spring:
   application:
-    name: albdemo01_server
+    name: albdemo02
   cloud:
     nacos:
       discovery:

@@ -3,11 +3,13 @@ package com.example.demo.controller;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.example.demo.entity.Result;
+import com.example.demo.feign.OrderService;
 import com.example.demo.handler.HelloHandler;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,9 @@ public class HelloController {
 
 //    @Value("${test.bl}")
 //    private String bl01;
+    @Autowired
+    private OrderService orderService;
+
 
     @ApiOperation(value = "test", notes = "test01")
     @GetMapping(value = "/say/{name}")
@@ -45,6 +50,12 @@ public class HelloController {
     @GetMapping("cj")
     public Result<String> getCJ(){
         return new Result(HttpStatus.OK, "成功", "持久化配置");
+    }
+
+    @GetMapping("getOrders")
+    public Result<String> getOrders(){
+        String result = orderService.getAllOrders();
+        return new Result<>(HttpStatus.OK, "查询成功", result);
     }
 
     public Result sayHelloExp(String name, Throwable  e){
