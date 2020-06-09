@@ -10,6 +10,7 @@ public class OrderController {
 
     @GetMapping(value = "getAll")
     public String getOrders(){
+        int result = 10/0;
         return "there is no order!";
     }
 

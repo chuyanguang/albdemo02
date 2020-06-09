@@ -36,3 +36,5 @@ feign:
       feignName:
         connectTimeout: 2000
         readTimeout: 1000
+  sentinel:
+    enabled: true

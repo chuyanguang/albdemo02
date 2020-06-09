@@ -12,10 +12,10 @@ spring:
 #        file-extension: yaml
 #        namespace: d11c8ad9-8f38-46b0-bf43-3de3c4beb9b3
 #        group: DEFAULT_GROUP
-#    sentinel:
-#      transport:
-#        dashboard: localhost:8080
-#      eager: true
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+      eager: true
 #      datasource:
 #        dsl:
 #          nacos:
