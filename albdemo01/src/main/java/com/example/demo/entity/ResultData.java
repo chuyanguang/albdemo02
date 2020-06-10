@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 
 @AllArgsConstructor
 @Data
-public class Result<T> {
+public class ResultData<T> {
 
     private HttpStatus code;
 

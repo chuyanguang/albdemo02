@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Result;
+import com.example.demo.entity.ResultData;
 import com.example.demo.entity.dto.ThemeDo;
 import com.example.demo.service.ThemeService;
 import com.github.pagehelper.PageInfo;
@@ -23,17 +23,17 @@ public class ThemeController {
     private ThemeService themeService;
 
     @GetMapping(value = "getAll")
-    public Result<List<ThemeDo>> getAllThemes(){
+    public ResultData<List<ThemeDo>> getAllThemes(){
         List<ThemeDo> themeDoList = themeService.getAllThemes();
-        return new Result(HttpStatus.OK, "查询成功", themeDoList);
+        return new ResultData(HttpStatus.OK, "查询成功", themeDoList);
     }
 
     @GetMapping(value = "getByPage")
-    public Result<PageInfo<ThemeDo>> getThemesByPage(@RequestParam(name = "page", defaultValue = "1") Integer page,
-                                                     @RequestParam(name = "size", defaultValue = "10") Integer size){
+    public ResultData<PageInfo<ThemeDo>> getThemesByPage(@RequestParam(name = "page", defaultValue = "1") Integer page,
+                                                         @RequestParam(name = "size", defaultValue = "10") Integer size){
         PageInfo<ThemeDo> pageInfo = themeService.getThemeByPage(page, size);
         log.info(pageInfo.getList().toString());
-        return new Result(HttpStatus.OK, "查询成功", pageInfo);
+        return new ResultData(HttpStatus.OK, "查询成功", pageInfo);
     }
 
 }
