@@ -1,3 +1,5 @@
+server:
+  port: 9001
 spring:
   application:
     name: albdemo02
@@ -13,5 +15,16 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
   jpa:
     show-sql: true
-server:
-  port: 9001
+  # redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 500
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0

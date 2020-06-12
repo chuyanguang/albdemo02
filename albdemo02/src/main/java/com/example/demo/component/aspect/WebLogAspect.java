@@ -1,11 +1,11 @@
 package com.example.demo.component.aspect;
 
-import com.example.demo.entity.ResultData;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
-import org.springframework.http.HttpStatus;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -14,7 +14,8 @@ import org.springframework.stereotype.Component;
 public class WebLogAspect {
 
     @Pointcut("execution(public * com.example.demo.controller..*(..))")
-    private void controllerAspect(){}
+    private void controllerAspect() {
+    }
 
     /**
      * 方法调用打印入参
@@ -22,7 +23,7 @@ public class WebLogAspect {
      * @param joinPoint
      */
     @Before(value = "controllerAspect()")
-    public void methodBefore(JoinPoint joinPoint){
+    public void methodBefore(JoinPoint joinPoint) {
         String className = joinPoint.getTarget().getClass().getName();
         String methodName = joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
