@@ -8,7 +8,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 @Slf4j
 @SpringBootTest
-class DemoApplicationTests {
+class RedisTest {
 
     //    @Autowired
 //    private RedisUtil redisUtil;

@@ -10,18 +10,18 @@ import org.springframework.http.HttpStatus;
 @Data
 public class ResultData<T> {
 
-    private HttpStatus code;
+    private int code;
 
     private String msg;
 
     private T data;
 
     public static <T> ResultData ok(String msg, T data){
-        return new ResultData(HttpStatus.OK, msg, data);
+        return new ResultData(HttpStatus.OK.value(), msg, data);
     }
 
     public static <T> ResultData fail(String msg, T data){
-        return new ResultData(HttpStatus.BAD_REQUEST, msg, data);
+        return new ResultData(HttpStatus.BAD_REQUEST.value(), msg, data);
     }
 
 }

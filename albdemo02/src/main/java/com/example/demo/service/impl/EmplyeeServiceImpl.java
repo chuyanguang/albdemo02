@@ -37,4 +37,13 @@ public class EmplyeeServiceImpl implements EmplyeeService {
             throw new BusinessException("更新员工信息失败");
         }
     }
+
+    @Override
+    public void create(EmplyeeDo emp) {
+        try {
+            emplyeeRepository.save(emp);
+        } catch (Exception e) {
+            throw new BusinessException("添加员工信息失败！");
+        }
+    }
 }

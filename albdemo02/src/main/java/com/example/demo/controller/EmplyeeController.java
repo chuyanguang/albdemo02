@@ -5,10 +5,7 @@ import com.example.demo.entity.dto.DeptDo;
 import com.example.demo.entity.dto.EmplyeeDo;
 import com.example.demo.service.EmplyeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,6 +32,12 @@ public class EmplyeeController {
     public ResultData updatePhoneByCode(String code, String phone) {
         emplyeeService.updatePhoneByCode(code, phone);
         return ResultData.ok("更新成功", null);
+    }
+
+    @PostMapping("save")
+    public ResultData save(@RequestBody EmplyeeDo emp){
+        emplyeeService.create(emp);
+        return ResultData.ok("添加成功", null);
     }
 
 }

@@ -12,4 +12,6 @@ public interface EmplyeeService {
 
     void updatePhoneByCode(String code, String phone);
 
+    void create(EmplyeeDo emp);
+
 }

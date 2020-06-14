@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "emplyee")
@@ -31,5 +32,9 @@ public class EmplyeeDo implements Serializable {
 
     @Column(name = "phone")
     private String phone;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "birth")
+    private Date birth;
 
 }
