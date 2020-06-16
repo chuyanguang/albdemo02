@@ -1,0 +1,48 @@
+server:
+  port: 8989
+spring:
+  application:
+    name: shardingjdbc_test
+  main:
+    allow-bean-definition-overriding: true
+sharding:
+  jdbc:
+    datasource:
+      names: test01,test02
+      test01:
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: 123456
+        url: jdbc:mysql://localhost:3306/test01?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+        type: com.alibaba.druid.pool.DruidDataSource
+      test02:
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        password: 123456
+        url: jdbc:mysql://localhost:3306/test02?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+        type: com.alibaba.druid.pool.DruidDataSource
+    config:
+      sharding:
+        tables:
+          t_user:
+#            key-generator-column-name: id  #主键
+            actual-data-nodes: test01.t_user  #数据节点
+            database-strategy:  #分库策略
+              inline:
+                sharding-column: cid
+                algorithm-expression: test01
+          t_dept:
+#            key-generator-column-name: id  #主键
+#            key-generator:
+#              type:
+            actual-data-nodes: test02.t_dept0${1..2}  #数据节点
+            database-strategy:  #分库策略
+              inline:
+                sharding-column: code
+                algorithm-expression: test02
+            table-strategy:
+              inline:
+                sharding-column: code
+                algorithm-expression: t_dept0${code % 2 + 1}
+        props:
+          sql.show: true
