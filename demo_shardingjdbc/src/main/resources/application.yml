@@ -23,6 +23,7 @@ sharding:
         type: com.alibaba.druid.pool.DruidDataSource
     config:
       sharding:
+        broadcast-tables: t_dictionary  #公共表
         tables:
           t_user:
 #            key-generator-column-name: id  #主键
@@ -44,5 +45,7 @@ sharding:
               inline:
                 sharding-column: code
                 algorithm-expression: t_dept0${code % 2 + 1}
+          t_dictionary:
+            actual-data-nodes: test0${}.t_dept0${1..2}  #数据节点
         props:
           sql.show: true
