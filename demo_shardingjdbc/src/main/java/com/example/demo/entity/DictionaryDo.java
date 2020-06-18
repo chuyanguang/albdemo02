@@ -13,13 +13,14 @@ public class DictionaryDo implements Serializable {
     private static final long serialVersionUID = -5716273089770231211L;
 
     @Id
+    @GeneratedValue
     @Embedded
     private DictionaryKey dictionaryKey;
 
-    @Column
+    @Column(name = "dic_value")
     private String value;
 
-    @Column
+    @Column(name = "dic_describe")
     private String describe;
 
 }

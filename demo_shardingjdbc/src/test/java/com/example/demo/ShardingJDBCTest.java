@@ -10,6 +10,7 @@ import com.example.demo.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 class ShardingJDBCTest {
@@ -39,16 +40,21 @@ class ShardingJDBCTest {
     }
 
     @Test
+    @Transactional
     void test03() {
         DictionaryKey dicKey = new DictionaryKey();
-        dicKey.setType("status");
-        dicKey.setCode("0");
+        dicKey.setType("code");
+        dicKey.setCode("1");
 
         DictionaryDo dic = new DictionaryDo();
         dic.setDictionaryKey(dicKey);
-        dic.setValue("成功");
+        dic.setValue("失败");
         dic.setDescribe("状态编码");
         dicRepository.save(dic);
+        Iterable<DictionaryDo> dicIterable = dicRepository.findAll();
+        dicIterable.forEach(System.out::println);
+
+//        dicRepository.delete(dic);
     }
 
 }

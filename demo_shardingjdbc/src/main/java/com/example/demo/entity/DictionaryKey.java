@@ -12,10 +12,10 @@ public class DictionaryKey implements Serializable {
 
     private static final long serialVersionUID = 4423193826197154186L;
 
-    @Column
+    @Column(name = "dic_type")
     private String type;
 
-    @Column
+    @Column(name = "dic_code")
     private String code;
 
 }
