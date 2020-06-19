@@ -1,14 +1,11 @@
 package com.example.demo;
 
-import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
 import com.example.demo.entity.UserDo;
 import com.example.demo.utils.MongoUtil;
 import com.mongodb.client.MongoCollection;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.Document;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -21,7 +18,7 @@ class DemoMongodbApplicationTests {
     private MongoTemplate mongoTemplate;
 
     @Test
-    void test01(){
+    void test01() {
         String collectionName = "test01";
         UserDo user = new UserDo();
         user.setName("张华");
