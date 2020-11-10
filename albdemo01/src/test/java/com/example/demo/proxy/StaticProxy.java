@@ -5,14 +5,14 @@ package com.example.demo.proxy;
  */
 public class StaticProxy implements Animal {
 
-    private Dog dog;
+    private Animal animal;
 
     public StaticProxy(Dog dog) {
-        this.dog = dog;
+        this.animal = dog;
     }
 
     @Override
     public String call() {
-        return dog.call();
+        return animal.call();
     }
 }
