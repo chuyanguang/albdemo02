@@ -55,4 +55,7 @@ public class HelloController {
         log.info("sayHelloDefault, {}", e.getMessage());
         return new ResultData(HttpStatus.OK, "异常处理", name);
     }
+
+
+
 }

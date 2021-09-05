@@ -14,14 +14,14 @@ public class ProxyInvocationHandler implements InvocationHandler {
     private Object target;
 
     //生成代理类
-    public Object getProxy(Object obj){
+    public Object getProxy(Object obj) {
         this.target = obj;
         return Proxy.newProxyInstance(target.getClass().getClassLoader(),
-                target.getClass().getInterfaces(),this);
+                target.getClass().getInterfaces(), this);
     }
 
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable   	{
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         //动态代理的本质：使用反射机制实现！
         return method.invoke(target, args);
     }

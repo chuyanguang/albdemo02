@@ -2,7 +2,8 @@
 <configuration>
 
     <property name="server_name" value="operation" />
-    <property name="log_dir" value="/data/logs/operation-service" />
+    <property name="log_dir" value="/Users/ygc/myresources/logs" />
+<!--    <property name="log_dir" value="/data/logs/operation-service" />-->
     <property name="maxFileSize" value="50MB" />
     <property name="maxHistory" value="180" />
 

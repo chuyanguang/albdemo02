@@ -3,6 +3,8 @@ package com.example.demo;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.expression.Expression;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -111,7 +113,25 @@ public class Demo01Test {
             }
         }
 
+    }
 
+    @Test
+    void test02() {
+//        Map<Integer, String> hashMap = new HashMap<>();
+//        hashMap.put(0, "东游记");
+//        Map<Integer, String> map = new HashMap<>();
+//        map.put(1, "西游记");
+//        map.put(2, "红褛梦");
+//        hashMap.putAll(map);
+//        System.out.println(hashMap);
+
+//        String ss = "hello";
+//        String ss2 = new String("hello");
+//        System.out.println(ss == ss2);
+        SpelExpressionParser parser = new SpelExpressionParser();
+        Expression expression = parser.parseExpression("100* (2 + 400) *1 + 66");
+        int result = (Integer) expression.getValue();
+        System.out.println(result);
     }
 
 }
